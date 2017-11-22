@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<!-- true 表示当前项目处于开发模式 -->
+	<constant name="struts.devMode" value="true" />
+	<package name="default" namespace="/" extends="struts-default">
+	
+		<action name="login" class="com.gem.kfc.actions.LoginAction"
+			method="login">
+			<result name="preIndex" type="redirectAction">
+				<param name="actionName">index_IndexAction</param>		
+				<param name="namespace">/</param>
+			</result>
+		</action>
+		
+		<action name="loginOut" class="com.gem.kfc.actions.LoginAction" method="loginOut">
+			<result name="login_page">/login.jsp</result>
+		</action>
+		
+		<action name="*_CartAction" class="com.gem.kfc.actions.CartAction" method="{1}">
+			<result name="cart_detail" type="redirect">/cart_detail.jsp</result>
+			<result name="main_page" type="redirect">/frame/main.jsp</result>
+			<result name="to_pay" type="redirect">/to_pay.jsp</result>
+		</action>
+		
+		<action name="*_IndexAction" class="com.gem.kfc.actions.IndexAction" method="{1}">	
+			<result name="success">/index.jsp</result>
+			<result name="main">/frame/main.jsp</result>
+		</action>
+		
+		
+	</package>
+</struts>
