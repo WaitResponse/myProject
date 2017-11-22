@@ -1,0 +1,19 @@
+package com.gem.xianzhi.dao.impl;
+
+import java.util.Set;
+
+import com.gem.xianzhi.dao.VideoDAO;
+import com.gem.xianzhi.dao.base.impl.BaseDAO;
+import com.gem.xianzhi.pojo.User;
+import com.gem.xianzhi.pojo.Video;
+
+public class VideoDAOImpl extends BaseDAO<Video> implements VideoDAO {
+
+	@Override
+	public Set<Video> getVideo(int userId) {
+		User user = getHibernateTemplate().load(User.class, userId);
+		return user.getVideo();
+	}
+
+
+}

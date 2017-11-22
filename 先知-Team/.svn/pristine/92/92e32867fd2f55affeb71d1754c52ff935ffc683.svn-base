@@ -1,0 +1,154 @@
+		.a-header{
+			margin-left: 25px;
+		}
+		.a-header1{
+			margin-left: 0px;
+		}
+		.a-img{
+			width: 30px;
+			height: 30px;
+			margin-left: 190px;
+			margin-top: 2px;
+		}
+		.a-img1{
+			width: 50px;
+			height: 50px;
+			margin-left: 60px;
+			margin-top: 100px;
+		}
+		.nc{
+			display: block;
+			margin-top: -40px;
+			margin-left: 125px;
+			font-weight: bold;
+			font-size: 19px;
+		}
+		
+		.l-1{
+			float: left;
+			margin-left: 800px;
+			margin-top: -20px;
+			font-size: 23px;
+			font-weight: bold;
+		}
+		
+		#xz{
+			width: 100%;
+			height: 70px;
+			
+		}
+		#q-over{
+			width: 100%;
+			height: 100%;
+			border: 0px solid red;
+		}
+		#x-down{
+			width: 100%;
+			height: auto;
+			background-color: #DCDCDC;
+		}
+		#x-down-1{
+			width: 80%;
+			height: 200px;
+			border: 0px solid red;
+			background-color: ghostwhite;
+			margin: 0 auto;			
+		}
+		#x-down-2{
+			width: 80%;
+			height: 50px;
+			background-color: white;
+			margin-top: 20px;
+			margin-left: 135px;
+		}
+		#x-down-3{
+			width: 80%;
+			height: 800px;
+			background-color: white;
+			margin-top: 10px;
+			margin-left: 135px;
+			
+			
+		}
+		#name{
+			margin-left:70px
+		}
+		
+		.bt1{
+			font-size: 18px;
+			font-weight: bold;
+			padding-top: 40px;
+			padding-left: 150px;
+		}
+		
+		.bt2{
+			
+			font-size: 18px;
+			font-weight: bold;
+			padding-top: 30px;
+			padding-left: 40px;
+		}
+		
+		.b-text{
+			float: left;
+			margin-left: 100px;
+			margin-top: -27px;
+			
+		}
+		.scfm{
+			font-size: 18px;
+			font-weight: bold;
+			padding-top: 80px;
+			padding-left: 140px;
+		} 
+		.sctp{
+			float: left;
+			margin-left: 130px;
+			top: -50px;
+			
+		}
+		.fb{
+			width:100px;
+			height:40px;
+			line-height:30px;
+			font-family:"Î¢ÈíÑÅºÚ","microsoft yahei";
+			cursor:pointer;
+			margin-top:3px;
+			margin-left: 180px;
+			display:inline-block;
+			border-radius:5px;
+			-webkit-border-radius:5px;
+			text-align:center;
+			background-color:#428bca;
+			color:#fff;
+			box-shadow: 0 -3px 0 #2a6496 inset;
+			-webkit-box-shadow: 0 -3px 0 #2a6496 inset;
+		}
+		.form-control{
+			height: 30px;
+			
+		}
+		#from-bt{
+			border: 0px solid red;
+			width: 400px;
+			height: 35px;
+			margin-left: 140px;
+			margin-top: -25px;
+		}
+		body{
+		  margin:0px;
+		  padding:0px;
+		  width:100%;
+		  height:100%;
+		 }
+		 .head-nav{
+		 	width:100%;
+		 	height:40px;
+		 	background-color: black;
+		 }
+		 .xianzhi{
+		 	font-size:35px;
+		 	color:#ED4040;
+		 	font-weight:bold;
+		 }
+		 

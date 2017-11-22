@@ -1,0 +1,210 @@
+<%@page contentType="text/html; charset=utf-8"%>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<base href="${pageContext.request.contextPath}/">
+<title>Insert title here</title>
+<link rel="stylesheet" href="css/common.css"/>
+<script src="js/lib/jquery-3.2.1.js"></script>
+</head>
+<body>
+<style type="text/css">
+		.a-header{
+			margin-left: 25px;
+		}
+		.a-header1{
+			margin-left: 0px;
+		}
+		.a-img{
+			width: 30px;
+			height: 30px;
+			margin-left: 190px;
+			margin-top: 2px;
+		}
+		.a-img1{
+			width: 50px;
+			height: 50px;
+			margin-left: 60px;
+			margin-top: 100px;
+		}
+		.nc{
+			display: block;
+			margin-top: -50px;
+			margin-left: 125px;
+			font-weight: bold;
+			font-size: 19px;
+		}
+		
+		.l-1{
+			float: left;
+			margin-left: 40px;
+			margin-top: 30px;
+			font-size: 23px;
+			font-weight: bold;
+		}
+		.l-2{
+			float: left;
+			margin-left: 30px;
+			margin-top: 30px;
+			font-size: 23px;
+			font-weight: bold;
+		}
+		.l-3{
+			float: left;
+			margin-left: 30px;
+			margin-top: 30px;
+			font-size: 23px;
+			font-weight: bold;
+		}
+		#xz{
+			width: 100%;
+			height: 70px;
+			
+		}
+		#q-over{
+			width: 100%;
+			height: 100%;
+			border: 0px solid red;
+		}
+		#x-down{
+			width: 100%;
+			height: 700px;
+			background-color: #DCDCDC;
+		}
+		#x-down-1{
+			width: 80%;
+			height: 200px;
+			border: 0px solid red;
+			background-color: ghostwhite;
+			margin: 0 auto;
+			
+		}
+		#x-down-2{
+			width: 50%;
+			height: 75px;
+			background-color: white;
+			margin-top: 20px;
+			margin-left: 135px;
+		}
+		#x-down-3{
+			
+			width: 25%;
+			height: 75px;
+			background-color: white;
+			margin-left: 870px;
+			margin-top: -75px;
+			
+		}
+		#x-down-4{
+			width: 50%;
+			height: 400px;
+			background-color: white;
+			margin-top: 2px;
+			margin-left: 135px;
+		}
+		#tian{
+			position:absolute;
+			font-size: 20px;
+			float: left; 
+			left: 870px;
+			top: 220px;
+			background-color: #2a90d7;
+			color: white;
+			width: 90px;
+			height:40px ;
+			border-radius: 10px;
+			border: none;
+		}
+		#tian1{
+			position:absolute;
+			font-size: 20px;
+			float: left; 
+			left: 980px;
+			top: 220px;
+			background-color: #2a90d7;
+			color: white;
+			width: 90px;
+			height:40px ;
+			border-radius: 10px;
+			border: none;
+		}
+		
+		
+		 
+	</style>
+	<body>
+<div id="q-over">
+	<div class="g-container">
+    <header title="头部导航条" class="g-minwidth" id="header" name="header">
+        <ul class="g-c h-left">
+            <li class="h-tianqi">
+                
+            </li>
+        </ul>
+        <ul class="h-right g-c" style="width: 100%;margin-top: -35px;">
+        	
+        	<li class="a-header"><a>推荐</a></li>
+            <li class="a-header"><a>热点</a></li>
+            <li class="a-header"><a>文章</a></li>
+            <li class="a-header"><a>科技</a></li>
+            <li class="a-header"><a>社会</a></li>
+            <li class="a-header"><a>国际</a></li>
+            <li class="a-header"><a>娱乐</a></li>
+            <li class="a-header"><a>体育</a></li>
+            <li class="a-header"><a>旅游</a></li>
+            <li class="a-header"><a>探索</a></li>
+            <li class="a-header"><a>游戏</a></li>
+            <li class="a-header"><a>其它</a></li>
+            
+            
+            <li><a><img src="images/42.jpg" class="a-img"/></a></li>
+            <li class="a-header1"><a href="#">昵称1234</a>
+            	
+            </li>
+            <li class="a-header2"><a>侵权投诉</a></li>
+            <li class="a-header3"><a>退出</a></li>
+            
+        </ul>
+    </header>
+    </div>
+	    <div id="xz">
+	    	<a style="margin-left: 100px;"><img src="images/logo-33.png"/></a>
+	    </div>
+	    
+	    <div id="x-down">
+	    	<div id="x-down-1">
+	    		<img src="images/42.jpg" class="a-img1"/>
+	    		<span class="nc">昵称1234</span>
+	    		<iframe src="danmu.jsp" style="margin-left: -75px;margin-top: -230px;width: 70%;height: 600px;"></iframe>
+                
+	    		<input type="button" id="tian" value="发布文章"/>
+	    		<input type="button" id="tian1" value="发布视频"/>
+	    	</div>
+	    	
+	    	<div id="x-down-2">
+	    		<a><li class="l-1">视频</li></a>
+	    		<a><li class="l-2">收藏</li></a>
+	    		<a><li class="l-3">我的邮件</li></a>
+	    	</div>
+	    	
+	    	<div id="x-down-3">
+	    		<div>
+		    		<li style="font-size: 22px;font-weight: bold;margin-left: 60px;">2</li>
+		    		<span style="color: gray;margin-top: 5px;margin-left: 55px;display: block;">关注</span>
+	    		</div>
+	    		<hr style="width: 1px;height: 60px;margin-left: 170px;margin-top: -55px;" />
+	    		
+	    		<div>
+		    		<li style="font-size: 22px;font-weight: bold;margin-left: 250px;margin-top: -60px;">2</li>
+		    		<span style="color: gray;margin-top: 5px;margin-left: 240px;display: block;">粉丝</span>
+	    		</div>
+	    	</div>
+	    	
+	    	<div id="x-down-4">
+	    		
+	    	</div>
+	    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping
+        SYSTEM
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.gem.xianzhi.pojo">
+	<class name="News" table="t_news">
+		<id name="id">
+			<generator class="native"/>
+		</id>
+		<property name="title"/>
+		<property name="content" type="text" length="65535"/>
+		<property name="date"/>
+		<property name="visitCount"/>
+		<property name="audit"/>
+		<property name="img"/>
+		<property name="discussCount"/>
+		<!-- 新闻分类 -->
+		<many-to-one name="classify"/>
+		
+		<!-- 作者 -->
+		<many-to-one  name="author"/>
+
+		<!-- 新闻评论 -->
+		<set name="discuss">
+			<key column="newsId"/>
+			<one-to-many class="Discuss"/>
+		</set>
+		
+		<!-- 轮播图可以为空 -->
+		<one-to-one name="focusNews" property-ref="news" cascade="all"/>			
+	</class>
+</hibernate-mapping>

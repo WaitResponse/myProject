@@ -1,0 +1,113 @@
+package com.gem.xianzhi.actions;
+
+import java.util.List;
+import java.util.Set;
+
+import org.hibernate.Hibernate;
+
+import com.gem.xianzhi.Biz.ClassifyBiz;
+import com.gem.xianzhi.Biz.DiscussBiz;
+import com.gem.xianzhi.Biz.NewsBiz;
+import com.gem.xianzhi.Biz.UserBiz;
+import com.gem.xianzhi.pojo.Classify;
+import com.gem.xianzhi.pojo.Discuss;
+import com.gem.xianzhi.pojo.News;
+import com.opensymphony.xwork2.ActionContext;
+
+public class preIndexAction {
+	private NewsBiz newsBiz;
+	private UserBiz userBiz;
+	private ClassifyBiz classifyBiz;
+	private DiscussBiz discussBiz;
+	private Classify classify;
+	private News news;
+	private Discuss discuss;
+	
+	//首页获取新闻列表
+	public String Index(){
+		List<News>newsList = newsBiz.getNewsList();
+		for(News news01:newsList){
+			news01.getAuthor().getNickName();
+		}
+		List<Classify> classifyList = classifyBiz.getClassifyList();
+		ActionContext.getContext().getSession().put("newsList", newsList);
+		ActionContext.getContext().getSession().put("classifyList", classifyList);//导航栏获取分类
+		return "loadNewsListSuccess";
+	}
+	//根据分类获取新闻列表
+	public String getNewsListByType(){
+		Classify classify1 = classifyBiz.getClassify(classify.getId());
+		Set<News> newsList = classify1.getNews();
+		ActionContext.getContext().getSession().put("newsList", newsList);
+		return "loadClassifySuccess";
+	}
+	
+	//根据新闻id获取新闻详情 
+	public String getNewsDetail(){
+		News news1 = newsBiz.getNews(news.getId());
+		Set<Discuss>discussSet = news1.getDiscuss();//加载评论
+		for(Discuss discuss : discussSet){
+			Hibernate.initialize(discuss.getReply());//加载每条评论的回复
+			discuss.getAuthor().getHeadImg();//加载评论作者的头像
+		}
+		ActionContext.getContext().getSession().put("news", news1);
+		ActionContext.getContext().getSession().put("discussSet", discussSet);
+		return "getDetailSuccess";
+	}
+
+	
+	public NewsBiz getNewsBiz() {
+		return newsBiz;
+	}
+
+	public void setNewsBiz(NewsBiz newsBiz) {
+		this.newsBiz = newsBiz;
+	}
+
+	public UserBiz getUserBiz() {
+		return userBiz;
+	}
+
+	public void setUserBiz(UserBiz userBiz) {
+		this.userBiz = userBiz;
+	}
+
+	public ClassifyBiz getClassifyBiz() {
+		return classifyBiz;
+	}
+
+	public void setClassifyBiz(ClassifyBiz classifyBiz) {
+		this.classifyBiz = classifyBiz;
+	}
+
+	public DiscussBiz getDiscussBiz() {
+		return discussBiz;
+	}
+
+	public void setDiscussBiz(DiscussBiz discussBiz) {
+		this.discussBiz = discussBiz;
+	}
+
+	public News getNews() {
+		return news;
+	}
+
+	public void setNews(News news) {
+		this.news = news;
+	}
+
+	public Discuss getDiscuss() {
+		return discuss;
+	}
+
+	public void setDiscuss(Discuss discuss) {
+		this.discuss = discuss;
+	}
+	public Classify getClassify() {
+		return classify;
+	}
+	public void setClassify(Classify classify) {
+		this.classify = classify;
+	}
+	
+}

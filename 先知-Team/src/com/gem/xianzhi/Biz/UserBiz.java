@@ -1,0 +1,38 @@
+package com.gem.xianzhi.Biz;
+
+import java.util.List;
+
+import com.gem.xianzhi.pojo.User;
+
+public interface UserBiz {
+	
+	public User login(String loginId,String pwd);
+	//注册时查找loginId和nickName是否重复
+	public User getUserByLN(String loginId,String nickName);
+	
+	public User login(String loginId);
+	
+	//注册用户
+	public int  add(User user);
+	
+	//根据用户Id加载用户
+	public User getUser(int id);
+	
+	public void update(User user);
+	
+	public int getUserCount(String keyword , int pageSize);
+	
+	public List<User>getUserList(String keyword, int pageSize, int pageNum);
+	
+	public int getUserCountByType(String keyword , int pageSize);
+	
+	public List<User>getUserByType(String keyword,int pageSize, int pageNum);
+	
+	public List<User> getUserList(String keyword);
+	//8.收藏
+		void addCollectNews(User user);
+			
+		void removeCollectNews(int newsId,int userId);
+		
+		void saveOrUpdate(User user);
+}

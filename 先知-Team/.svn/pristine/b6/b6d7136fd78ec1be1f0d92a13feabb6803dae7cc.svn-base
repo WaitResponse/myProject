@@ -1,0 +1,22 @@
+package com.gem.xianzhi.Biz.impl;
+
+import com.gem.xianzhi.Biz.DiscussBiz;
+import com.gem.xianzhi.dao.DiscussDAO;
+import com.gem.xianzhi.dao.ReplyDAO;
+import com.gem.xianzhi.pojo.Discuss;
+
+public class DiscussBizImpl implements DiscussBiz {
+	private DiscussDAO discussDAO;
+	@Override
+	public Discuss getDiscuss(int discussId) {
+		return  discussDAO.get(discussId);
+	}
+	public DiscussDAO getDiscussDAO() {
+		return discussDAO;
+	}
+	public void setDiscussDAO(DiscussDAO discussDAO) {
+		this.discussDAO = discussDAO;
+	}
+	
+	
+}

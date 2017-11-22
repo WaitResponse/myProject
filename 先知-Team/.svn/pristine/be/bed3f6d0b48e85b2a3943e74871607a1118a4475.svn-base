@@ -1,0 +1,12 @@
+package com.gem.xianzhi.dao;
+
+import java.util.Set;
+
+import com.gem.xianzhi.dao.base.IBaseDAO;
+import com.gem.xianzhi.pojo.Video;
+
+public interface VideoDAO extends IBaseDAO<Video> {
+
+	// 根据用户Id,获取用户发布的视频
+	Set<Video> getVideo(int userId);
+}

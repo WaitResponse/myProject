@@ -1,0 +1,146 @@
+package com.gem.xianzhi.actions;
+
+import java.util.List;
+import java.util.Set;
+
+import com.gem.xianzhi.Biz.DiscussBiz;
+import com.gem.xianzhi.Biz.ReplyBiz;
+import com.gem.xianzhi.Biz.UserBiz;
+import com.gem.xianzhi.pojo.Discuss;
+import com.gem.xianzhi.pojo.Email;
+import com.gem.xianzhi.pojo.News;
+import com.gem.xianzhi.pojo.Reply;
+import com.gem.xianzhi.pojo.User;
+import com.gem.xianzhi.pojo.UserApply;
+import com.opensymphony.xwork2.ActionContext;
+
+public class UserCenterAction {
+	private UserBiz userBiz;
+	private User user;
+	private DiscussBiz discussBiz;
+	private ReplyBiz replyBiz;
+//	private UserApply userApply;
+	
+	//1.加载用户的粉丝
+	public String loadFans(){		
+		User currUser = userBiz.getUser(user.getId());
+		Set<UserApply> fansSet = currUser.getFans();	
+	/*	for(UserApply userApply :fansSet){
+			System.out.println("=========="+userApply.getByFollow().getNickName()+"==========");//自己被哪些人关注(即我的粉丝)
+		}*/
+		ActionContext.getContext().getSession().put("fansSet", fansSet);	
+		return "loadFansSuccess";
+
+	}
+	//2.加载用户关注的人
+	public String loadFollowUser(){
+		User currUser = userBiz.getUser(user.getId());
+		Set<UserApply> followUserSet = currUser.getFollowUser();
+		ActionContext.getContext().getSession().put("followUserSet", followUserSet);
+		return "loadFollowUserSuccess";
+	}
+	
+	//3.加载用户收到的邮件
+	public String loadReceiveEmails(){
+		User currUser = userBiz.getUser(user.getId());
+		Set<Email>receiveEmails = currUser.getReceiveEmails();
+		ActionContext.getContext().getSession().put("receiveEmails",receiveEmails );	
+		//return "loadReceiveEmailsSuccess";
+		return "success";
+	}
+	//4.加载用户发送的邮件
+		public String loadSendEmails(){
+			User currUser = userBiz.getUser(user.getId());
+			Set<Email>sendEmails = currUser.getSendEmails();
+			ActionContext.getContext().getSession().put("sendEmails",sendEmails);
+			//return "loadSendEmailsSuccess";
+			return "success";
+		}
+		
+	//5.加载用户收藏的新闻
+	public String loadCollectNews(){
+		User currUser = userBiz.getUser(user.getId());
+		ActionContext.getContext().getSession().put("otherUser", currUser);
+		Set<News>collectNews = currUser.getCollectNews();
+		for(News news:collectNews){
+			news.getClassify().getName();
+			news.getAuthor().getNickName();
+		}
+		ActionContext.getContext().getSession().put("collectNews",collectNews);
+		return "loadCollectNewsSuccess";
+	}
+	//6.加载用户发布的新闻
+	public String loadMyNews(){
+		User currUser = userBiz.getUser(user.getId());
+		int fansCount =currUser.getFans().size();
+		int followCount = currUser.getFollowUser().size();
+		Set<News>myNews = currUser.getNews();
+		ActionContext.getContext().getSession().put("myNews",myNews);
+		ActionContext.getContext().getSession().put("fansCount",fansCount);
+		ActionContext.getContext().getSession().put("followCount",followCount);
+		//return "loadMyNewsSuccess";
+		return "success";
+	}
+
+	//7.加载用户发布的评论
+	public String loadDiscuss(){
+		List<Discuss>discussList=discussBiz.getDiscuss(user.getId());		
+		ActionContext.getContext().getSession().put("discussList",discussList);
+		//return "loadDiscussSuccess";
+		return "success";
+	}
+	
+	//8.加载用户发布的回复
+	public String loadReplys(){
+		List<Reply>replyList = replyBiz.getReplyList(user.getId());//用户发布的回复
+		ActionContext.getContext().getSession().put("replyList",replyList);
+		//return "loadReplysSuccess";
+		return "success";
+	}
+
+	
+	
+	
+	public UserBiz getUserBiz() {
+		return userBiz;
+	}
+	public void setUserBiz(UserBiz userBiz) {
+		this.userBiz = userBiz;
+	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	public DiscussBiz getDiscussBiz() {
+		return discussBiz;
+	}
+	public void setDiscussBiz(DiscussBiz discussBiz) {
+		this.discussBiz = discussBiz;
+	}
+	public ReplyBiz getReplyBiz() {
+		return replyBiz;
+	}
+	public void setReplyBiz(ReplyBiz replyBiz) {
+		this.replyBiz = replyBiz;
+	}
+	
+	/*	List<User>fansList = new ArrayList<User>();
+	List<User>followUserList = new ArrayList<User>();
+	Set<UserApply> followUserSet = currUser.getFollowUser();
+	for(UserApply userApply1 :fansSet){
+		fansList.add(userApply1.getByFollow());
+	}
+	for(UserApply userApply2 :followUserSet){
+		followUserList.add(userApply2.getFollow());
+	}*/
+	
+	
+	
+	
+	
+	
+	
+	
+}

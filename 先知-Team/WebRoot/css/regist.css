@@ -1,0 +1,79 @@
+
+.reg_div{
+  width: 500px;
+  height: 550px;
+  border:1px solid #333;
+  border-radius: 5px;
+  text-align: center;
+  margin-top: 20px;
+  background-color: transparent; 
+  margin-top:70px;
+  margin-left:500px;
+}
+.reg_div p{
+  padding: 30px 0px;
+  font-size: 30px;
+}
+
+.reg_ul{
+  width: 100%;
+}
+.reg_ul li{
+  margin: auto;
+  overflow: hidden;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.reg_ul li span{
+  float: left;
+  width:100px;
+  text-align:right;
+  display:inline-block;
+  margin: auto;
+  margin-left:30px;
+  margin-top: 10px;
+}
+.reg_ul li span.tip{margin:6px 0 0 10px;width:40px;text-align:left;}
+.reg_ul li input{
+  float: left;
+  width: 228px;
+  height: 30px;
+  border:1px solid #333;
+  border-radius: 3px;
+  padding-left: 20px;
+  outline:medium;
+  margin-left: 10px;
+}
+.reg_ul li button{
+   cursor: pointer;
+    width: 250px;
+    height: 44px;
+    margin-top: 25px;
+    margin-left:25px;
+    padding: 0;
+    background: #ef4300;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    border: 1px solid #ff730e;
+    -moz-box-shadow:
+        0 15px 30px 0 rgba(255,255,255,.25) inset,
+        0 2px 7px 0 rgba(0,0,0,.2);
+    -webkit-box-shadow:
+        0 15px 30px 0 rgba(255,255,255,.25) inset,
+        0 2px 7px 0 rgba(0,0,0,.2);
+    box-shadow:
+        0 15px 30px 0 rgba(255,255,255,.25) inset,
+        0 2px 7px 0 rgba(0,0,0,.2);
+    font-family: 'PT Sans', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0,0,0,.1);
+    -o-transition: all .2s;
+    -moz-transition: all .2s;
+    -webkit-transition: all .2s;
+    -ms-transition: all .2s;
+}
+

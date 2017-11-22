@@ -1,0 +1,18 @@
+package com.gem.xianzhi.dao.impl;
+
+import java.util.Set;
+
+import com.gem.xianzhi.dao.DiscussDAO;
+import com.gem.xianzhi.dao.base.impl.BaseDAO;
+import com.gem.xianzhi.pojo.Discuss;
+import com.gem.xianzhi.pojo.News;
+
+public class DiscussDAOImpl extends BaseDAO<Discuss> implements DiscussDAO {
+
+	@Override
+	public Set<Discuss> getDiscuss(int newsId) {
+		return getHibernateTemplate().load(News.class, newsId).getDiscuss();
+	}
+
+
+}

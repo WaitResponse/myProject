@@ -1,0 +1,255 @@
+<%@page contentType="text/html; charset=utf-8"%>
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<base href="${pageContext.request.contextPath}/">
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/common.css"/>
+	    <script src="js/lib/jquery-3.2.1.js"></script>
+	    <script type="text/javascript" charset="utf-8" src="kindeditor-4.1.10/kindeditor.js"></script>      
+		<script type="text/javascript" charset="utf-8" src="kindeditor-4.1.10/lang/zh_CN.js"></script>  
+
+		 <script language="javascript" type="text/javascript">
+		    KindEditor.ready(function(K) {
+		       K.create('#pubcontent', {  
+		          uploadJson : 'kindeditor-4.1.10/jsp/upload_json.jsp',  
+		          fileManagerJson : 'kindeditor-4.1.10/jsp/file_manager_json.jsp',  
+		         allowFileManager : true,
+		         afterBlur: function(){this.sync();},
+		         afterCreate : function(){ //kindeditor创建后，将编辑器的内容设置到原来的textarea控件里
+		               this.sync();   
+		        },
+		        afterChange: function(){ //编辑器内容发生变化后，将编辑器的内容设置到原来的textarea控件里
+		               this.sync();   
+		        }
+		       });  
+		 	});  
+		  </script>
+	</head>
+	<style type="text/css">
+		.a-header{
+			margin-left: 25px;
+		}
+		.a-header1{
+			margin-left: 0px;
+		}
+		.a-img{
+			width: 30px;
+			height: 30px;
+			margin-left: 190px;
+			margin-top: 2px;
+		}
+		.a-img1{
+			width: 50px;
+			height: 50px;
+			margin-left: 60px;
+			margin-top: 100px;
+		}
+		.nc{
+			display: block;
+			margin-top: -40px;
+			margin-left: 125px;
+			font-weight: bold;
+			font-size: 19px;
+		}
+		
+		.l-1{
+			float: left;
+			margin-left: 40px;
+			margin-top: 10px;
+			font-size: 23px;
+			font-weight: bold;
+		}
+		
+		#xz{
+			width: 100%;
+			height: 70px;
+			
+		}
+		#q-over{
+			width: 100%;
+			height: 100%;
+			border: 0px solid red;
+		}
+		#x-down{
+			width: 100%;
+			height: 1200px;
+			background-color: #DCDCDC;
+		}
+		#x-down-1{
+			width: 80%;
+			height: 200px;
+			border: 0px solid red;
+			background-color: ghostwhite;
+			margin: 0 auto;
+			
+		}
+		#x-down-2{
+			width: 80%;
+			height: 50px;
+			background-color: white;
+			margin-top: 20px;
+			margin-left: 135px;
+		}
+		#x-down-3{
+			width: 80%;
+			height: 800px;
+			background-color: white;
+			margin-top: 10px;
+			margin-left: 135px;
+			
+			
+		}
+	
+		
+		.bt1{
+			font-size: 18px;
+			font-weight: bold;
+			padding-top: 40px;
+			padding-left: 60px;
+		}
+		
+		.bt2{
+			
+			font-size: 18px;
+			font-weight: bold;
+			padding-top: 30px;
+			padding-left: 40px;
+		}
+		
+		.b-text{
+			float: left;
+			margin-left: 100px;
+			margin-top: -27px;
+			
+		}
+		.scfm{
+			font-size: 18px;
+			font-weight: bold;
+			padding-top: 80px;
+			padding-left: 40px;
+		} 
+		.sctp{
+			float: left;
+			margin-left: 130px;
+			top: -50px;
+			
+		}
+		.fb{
+			width:100px;
+			height:40px;
+			line-height:30px;
+			font-family:"微软雅黑","microsoft yahei";
+			cursor:pointer;
+			margin-top:3px;
+			margin-left: 150px;
+			display:inline-block;
+			border-radius:5px;
+			-webkit-border-radius:5px;
+			text-align:center;
+			background-color:#428bca;
+			color:#fff;
+			box-shadow: 0 -3px 0 #2a6496 inset;
+			-webkit-box-shadow: 0 -3px 0 #2a6496 inset;
+		}
+		.form-control{
+			height: 30px;
+			
+		}
+		#from-bt{
+			border: 0px solid red;
+			width: 400px;
+			height: 35px;
+			margin-left: 140px;
+			margin-top: -25px;
+		}
+		body{
+		  margin:0px;
+		  padding:0px;
+		 }
+		 .head-nav{
+		 	width:100%;
+		 	height:40px;
+		 	background-color: black;
+		 }
+	</style>
+	<body>
+<div id="q-over">
+	<div class="g-container">
+    <header title="头部导航条" class="g-minwidth" id="header" name="header">
+        <ul class="g-c h-left">
+            <li class="h-tianqi">
+                
+            </li>
+        </ul>
+        <ul class="h-right g-c" style="width: 100%;margin-top: -35px;">
+        	
+        	<li class="a-header"><a>推荐</a></li>
+            <li class="a-header"><a>热点</a></li>
+            <li class="a-header"><a>文章</a></li>
+            <li class="a-header"><a>科技</a></li>
+            <li class="a-header"><a>社会</a></li>
+            <li class="a-header"><a>国际</a></li>
+            <li class="a-header"><a>娱乐</a></li>
+            <li class="a-header"><a>体育</a></li>
+            <li class="a-header"><a>旅游</a></li>
+            <li class="a-header"><a>探索</a></li>
+            <li class="a-header"><a>育儿</a></li>
+            <li class="a-header"><a>游戏</a></li>
+            
+            
+            <li><a><img src="images/42.jpg" class="a-img"/></a></li>
+            <li class="a-header1"><a href="#">小编</a>
+            	
+            </li>
+            <li class="a-header2"><a>侵权投诉</a></li>
+            <li class="a-header3"><a>退出</a></li>
+            
+        </ul>
+    </header>
+    </div>
+	    <div id="xz">
+	    	<a style="margin-left: 100px;"><img src="images/logo-33.png"/></a>
+	    </div>
+	    
+	    <div id="x-down">
+	    	<div id="x-down-1">
+	    		<img src="images/42.jpg" class="a-img1"/>
+	    		<span class="nc">小编</span>                
+	    	</div>
+	    	
+	    	<div id="x-down-2">
+	    		<a><li class="l-1">发布新闻</li></a>
+	    	</div>
+	    	
+	    	<div id="x-down-3">
+	    		<form action="uploadNews_NewsAction" method="post">
+	    		<li class="bt1">标题:</li>
+	    		<div id="from-bt">
+		    		<input type="text" class="form-control" id="name" placeholder="请输入标题">
+	    		</div>
+	    		<p class="scfm">上传封面:</p>
+	    		
+		    	<div style="margin-left: 120px;margin-top: -70px;">
+		    		<iframe src="cj.jsp" width="" height=""></iframe>
+		    	</div>
+		    	
+	    		<div style="margin-left: 40px;margin-top: 30px;">
+		    		<textarea id="pubcontent" name="messageContent" style="width:85%;height:350px;visibility:hidden;">
+						${news.content}
+					</textarea>
+				</div>
+				
+	    		<div style="margin-left: 300px;margin-top: 50px;width: 100px;">
+ 					<input type="submit" value="发布" class="fb"/>
+	    		</div>
+				</form>
+	    	</div>
+	    	
+	    	
+	    </div>
+</div>
+	</body>
+</html>

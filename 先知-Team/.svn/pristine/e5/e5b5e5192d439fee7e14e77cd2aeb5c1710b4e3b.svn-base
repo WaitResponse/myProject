@@ -1,0 +1,41 @@
+<%@ page contentType="text/html;charset=utf-8"%>
+<html>
+	<head>
+	 <base href="${pageContext.request.contextPath}/">
+ <style type="text/css">
+	body{
+	  margin:0px;
+	  padding:0px;
+	 }
+	 .head-nav{
+	 	width:100%;
+	 	height:40px;
+	 	background-color: black;
+	 }
+</style>
+  <script type="text/javascript" charset="utf-8" src="kindeditor-4.1.10/kindeditor.js"></script>      
+
+<script type="text/javascript" charset="utf-8" src="kindeditor-4.1.10/lang/zh_CN.js"></script>  
+
+   <script language="javascript" type="text/javascript">
+
+   KindEditor.ready(function(K) {
+       K.create('#pubcontent', {  
+          uploadJson : 'kindeditor-4.1.10/jsp/upload_json.jsp',  
+          fileManagerJson : 'kindeditor-4.1.10/jsp/file_manager_json.jsp',  
+         allowFileManager : true,
+         afterBlur: function(){this.sync();}
+       });  
+  }); 
+  </script>
+</head>
+	<body>
+		<form role="form">
+ 			 <div class="form-group">
+   				 <label for="name">名称</label>
+   				 <input type="text" class="form-control" id="name" placeholder="请输入标题">
+   			</div>
+		</form>
+		<textarea id="editor_id" name="content" style="width:96%;height:350px;visibility:hidden;"></textarea> 
+	</body>
+</html>

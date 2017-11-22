@@ -1,0 +1,223 @@
+<%@page contentType="text/html; charset=utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="${pageContext.request.contextPath}/">
+    <title>${news.title }</title>
+    <link rel="stylesheet" href="css/common.css"/>
+    <link  rel="stylesheet" href="css/main.css" />
+	<link rel="stylesheet" type="text/css" href="css/sinaFaceAndEffec.css" />
+		   
+    <script src="js/jquery-3.2.1.js"></script>
+    <script src="js/jquery.timeago.js"></script>
+  	<script type="text/javascript">		
+			$(function(){
+				 $(".test").hide();
+				 $(":button").click(function(){
+						$(".test").toggle('slow');
+						$(this).val($(this).val()=="回复· 1条回复"?"回复· 收起回复":"回复· 1条回复");
+					}
+				);
+			});
+			$(function() {
+	  		$('.timeago').timeago();
+			});
+		</script>
+    <style type="text/css">
+       #huifu{
+				width: 800px;
+				height: 100px;
+				margin-left: 0px;
+				margin-top: 100px;
+				border: 0px solid red;
+				
+			}
+        .news-jieshao-cont{
+            width: 630px;
+            height: auto;
+            margin: 24px 15px;
+            margin-left: -100px;
+            
+        }
+        .news-jieshao-cont h1{
+            display: block;
+            width: 100%;
+            height: 31px;
+            margin-bottom: 15px;
+            font-weight: bolder;
+            color: #000000;
+            text-align: center;
+            line-height: 31px;
+            font-size: 24px;
+        }
+        .subtitle{
+            position: relative;
+            font-size: 11px;
+            line-height: 1;
+            color: #505050;
+            text-align: center;
+        }
+        .news-item-pic1{
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+        .user-context{
+        	width: 380px;
+        	height: 400px;
+        	margin-left: 0px;
+        	
+        }
+    </style>
+</head>
+<body>
+	<div class="g-container">
+    <header title="头部导航条" class="g-minwidth" id="header" name="header">
+        <ul>
+            <li class="h-tianqi">
+               <a class="a-header">
+                    <iframe  width="150" scrolling="no" height="70" frameborder="0" allowtransparency="true" style="margin-top: 5px;"
+	    			src="http://i.tianqi.com/index.php?c=code&id=11&color=%230070C0&icon=1&site=15">
+	    		</iframe>
+                </a>
+            </li>
+        </ul>
+        <ul class="h-right g-c">
+            <li style="margin-right: 14px;" class="g-active">
+                <div class="h-login">
+                  <a>登录</a>
+                </div>
+            </li>
+            <li><a>联系我们</a></li>
+        </ul>
+    </header>
+    </div>
+    
+<a href="#"><p style="font-weight:800;font-size: 35px;color: #ED4040;margin-left: 70px;">先知</p></a>
+<a href="#"><p style="color:black;float: left;margin-top: -25px;margin-left: 165px;">首页</p></a>
+<p style="color: gray;margin-left: 200px;margin-top: -26px;">/正文</p>
+<hr style="height:2px;border:none;border-top:2px groove gainsboro;border-top:2px groove gainsboro;margin-top: 20px;"/>
+    
+<div class="g-container">
+		<div id="div_right">
+			<iframe class="user-context" frameborder="0" scrolling="no" marginwidth="0" marginheight="0"  width="330px" height="550px" src="userRelease.jsp" style="float: right;">
+			</iframe>
+		</div>
+    <div style="width: 660px;height: auto;margin: 0 auto">
+        
+        <div class="news-jieshao-cont">
+           	${news.content }
+        </div>
+        
+      <div id="div2" style="margin-left: -95px;margin-top: 0px;">
+			<p style="color:red ;font-size: 18px;">${news.discussCount }</p><p style="font-size: 18px;color: darkslategray;margin-left: 15px;margin-top: -24px;">条评论</p>
+		</div>
+		<!-- 评论框变大小 效果-->
+		<div id="pinglun">
+
+			<div id="content" style="width: 700px; height: auto;">
+			<div class="wrap">
+				<div class="comment">
+					<div class="head-face">
+						<img src="images/18.jpg" / >
+						<p>我是鸟</p>
+					</div>
+					<div class="content">
+						<div class="cont-box">
+							<textarea class="text" placeholder="请输入..."></textarea>
+						</div>
+						<div class="tools-box">
+							<div class="operator-box-btn"><span class="face-icon"  >☺</span><span class="img-icon">▧</span></div>
+							<div class="submit-btn"><input type="button" onClick="out()"value="提交评论" /></div>
+						</div>
+					</div>
+				</div>
+				<div id="info-show">
+					<ul>
+						<c:choose>
+							<c:when test="${ empty discussSet }">
+								<li>暂无评论</li>				
+							</c:when>
+							<c:otherwise>
+							<c:forEach items="${discussSet }" var="discuss">
+								<li>
+									<div class="head-face">
+										<img src="${currUser.headImg}" / >
+									</div>
+									<div class="reply-cont">
+										<p class="username">${currUser.nickName}</p>
+										<p class="comment-body">${discuss.content }</p>
+										<p class="comment-footer"><time  class="timeago" datetime="${discuss.date }"></time>　${discuss.replyCount }回复　点赞0　</p>
+									</div>
+								</li>
+							</c:forEach>
+							</c:otherwise>
+						</c:choose>					
+					</ul>
+				</div>
+			</div>
+			
+		
+			<%-- <c:choose>
+				<c:when test="${ empty news }">
+					<li>暂无回复</li>
+				</c:when>
+				<c:otherwise>
+				<c:forEach items="${discussSet }" var="discuss">
+				<hr style="height:1px;border:none;border-top:1px groove gainsboro;border-top:1px groove gainsboro;margin-top: 50px;margin-left: -110px; width:710px;" />		
+					<div id="pinglun1" style="margin-top: 10px;">
+						<a href="#"><img src="images/20.jpg" style="width: 45px;height: 45px;margin-left: -100px;margin-top: 0px;float: left;"/></a>
+						<span style="font-size: 14px;margin-top: 15px;margin-left: -40px; float: left;"><a href="#" style="color: #406599;text-decoration:none;">我</a></span>
+						<p style="color: gray;font-size: 13px;float: left;margin-top: 15px;margin-left: 5px;"><time  class="timeago" datetime="${discuss.date }"></time></p>
+						<p style="font-size: 15px;float: left;margin-left: -215px;margin-top: 60px; width: 620px;">${discuss.content }</p>
+					</div>
+					</c:forEach>
+				</c:otherwise>
+			</c:choose> --%>
+				
+<!--         <div id="huifu">
+			 <input id="btn1" type="button" style="float: left;margin-top: 20px;color: #406599;margin-left: -620px;background: none;border: 0px;font-size: 15px;" value="回复· 1条回复" /></a>
+				<div class="test" style="margin-left: -75px;">
+					<a href="#"><img src="images/21.jpg" style="float:left;width: 45px;height: 45px;margin-left: -620px;margin-top: 60px;"/>
+					<span style="float:left;text-decoration:none;color:#406599;font-size: 14px;margin-top: 70px;margin-left: -565px; ">安静</span></a>
+					<p style="color: gray;font-size: 13px;float: left;margin-top: 72px;margin-left: -535px;">13分钟前</p>
+					<p style="font-size: 15px;float: left;margin-left: -135px;margin-top: 105px; width: 620px;">
+						初恋今天结婚了，我去了，没有尴尬，没有扭捏，大大方方的就去了，她还是和当年我看上她时一样漂亮有气质，一样那么温柔 那么可爱。
+						但是好奇怪我没有妒忌和不愉快，那一刻终于发现，曾经爱她是真的，现在的祝福也是真的。原来真的有由衷的祝福，感谢她那么优秀，我的青春没白过
+					</p>
+					<a href="#"><span style="float:left;text-decoration:none;color:#406599;font-size: 14px;margin-left: -620px;margin-top: 190px;">回复</span></a>
+				</div>
+		</div> -->
+		</div>
+		
+   </div>
+</div>
+</body>
+<script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript" src="js/sinaFaceAndEffec.js"></script>
+	<script type="text/javascript">
+		// 绑定表情
+		$('.face-icon').SinaEmotion($('.text'));
+		// 测试本地解析
+		function out() {
+			var inputText = $('.text').val();
+			$('#info-show ul').append(reply(AnalyticEmotion(inputText)));
+		}
+		
+		var html;
+		function reply(content){
+			html  = '<li>';
+			html += '<div class="head-face">';
+			html += '<img src="${currUser.headImg}" / >';
+			html += '</div>';
+			html += '<div class="reply-cont">';
+			html += '<p class="username">${currUser.nickName}</p>';
+			html += '<p class="comment-body">'+content+'</p>';
+			html += '<p class="comment-footer">2016年10月5日　回复　点赞0　</p>';
+			html += '</div>';
+			html += '</li>';
+			return html;
+		}
+	</script>
+
+</html>

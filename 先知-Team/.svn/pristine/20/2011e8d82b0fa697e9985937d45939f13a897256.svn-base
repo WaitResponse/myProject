@@ -1,0 +1,196 @@
+package com.gem.xianzhi.actions;
+
+import java.util.List;
+
+import com.gem.xianzhi.Biz.UserBiz;
+import com.gem.xianzhi.Biz.UserDetailBiz;
+import com.gem.xianzhi.pojo.User;
+import com.gem.xianzhi.pojo.UserDetail;
+import com.opensymphony.xwork2.ActionContext;
+
+public class UserAction {
+	private User user;
+	private int currPage;
+	private String keyword;
+	private UserBiz userBiz;
+	private String Msg;
+	private UserDetail userDetail;
+	private UserDetailBiz userDetailBiz;
+	//后台登录(同时加载所用户列表)
+	public String backStageLogin(){//后台管理员登录
+		User Administrator=userBiz.login(user.getLoginId());
+		
+		if(Administrator!=null&&Administrator.getType().equals("管理员")&&Administrator.getPwd().equals(user.getPwd())){
+			ActionContext.getContext().getSession().put("Administrator", Administrator);
+			if(currPage<=0){
+				currPage=1;
+			}
+			if(keyword==null){
+				keyword="";
+			}
+			int pageSize = 10;
+			int pageCount = userBiz.getUserCount(keyword,pageSize);
+			ActionContext.getContext().getSession().put("pageCount", pageCount);
+			
+			//如果当前页数大于总页数
+			if(currPage>pageCount){
+				currPage--;
+			}
+			ActionContext.getContext().getSession().put("currPage", currPage);
+			List<User>userList = userBiz.getUserList(keyword, pageSize, currPage);
+			ActionContext.getContext().getSession().put("userList", userList);
+			return "bkLoginSuccess";
+		}else{
+			String msg="用户不存在或密码错误";
+			ActionContext.getContext().getSession().put("msg", msg);
+			return "fail";
+		}	
+	}
+	//前台登录
+	public String login(){
+		Msg = "";
+		boolean flag = true ;
+		User currUser = userBiz.login(user.getLoginId());
+		if(currUser==null||currUser.getType().equals("管理员")){
+			Msg = "用户不存在";
+			flag = false ; 
+		}else if(!currUser.getPwd().equals(user.getPwd())){
+			Msg = "密码错误";
+			flag = false ; 
+		}else if(currUser.getState().equals("封禁")){
+			Msg = "用户被封禁";
+			flag = false ; 
+		}
+		if(flag){
+			ActionContext.getContext().getSession().put("currUser", currUser);
+			return "loginSuccess";
+		}else{
+			ActionContext.getContext().put("Msg", Msg);
+			return "loginFail";
+		}	
+	}
+	
+	
+	//加载所有用户
+	public String preIndex(){
+		if(currPage<=0){
+			currPage=1;
+		}
+		if(keyword==null){
+			keyword="";
+		}
+		int pageSize = 10;
+		int pageCount = userBiz.getUserCount(keyword,pageSize);
+		ActionContext.getContext().getSession().put("pageCount", pageCount);
+		
+		//如果当前页数大于总页数
+		if(currPage>pageCount){
+			currPage--;
+		}
+		ActionContext.getContext().getSession().put("currPage", currPage);
+		List<User>userList = userBiz.getUserList(keyword, pageSize, currPage);
+		ActionContext.getContext().getSession().put("userList", userList);
+			return "loadAllSuccess";
+	}
+	
+	//用户封禁和解封
+	public String bannedAndDeblock(){
+		User newUser = userBiz.getUser(user.getId());
+		if(newUser.getState().equals("封禁")){
+			newUser.setState("正常");
+		}else{
+			newUser.setState("封禁");
+		}	
+		userBiz.update(newUser);
+		return "bdSuccess";
+	}
+	
+	public String userType(){
+		if(currPage<=0){
+			currPage=1;
+		}
+		if(keyword==null){
+			keyword="";
+		}
+		int pageSize = 10;
+		int pageCount = userBiz.getUserCountByType(keyword,pageSize);
+		ActionContext.getContext().getSession().put("pageCount", pageCount);
+		//如果当前页数大于总页数
+		if(currPage>pageCount){
+			currPage--;
+		}
+		ActionContext.getContext().getSession().put("currPage", currPage);
+		List<User>userList = userBiz.getUserByType(keyword, pageSize, currPage);
+		ActionContext.getContext().getSession().put("userList", userList);
+			return "loadAllSuccess";
+	}
+	
+	public String regist() {
+		if(userBiz.getUserByLN(user.getLoginId(), user.getNickName())==null){//loginId和昵称没有重复
+			user.setType("普通用户");
+			user.setState("正常");
+			user.setUserDetail(userDetail);
+			userBiz.add(user);			
+			userDetail.setUser(user);
+			userDetailBiz.add(userDetail);
+			Msg = "注册成功!";
+			ActionContext.getContext().put("Msg", Msg);
+			return "registSuccess";
+		}else{
+			Msg = "账号或昵称已被使用";
+			ActionContext.getContext().put("Msg", Msg);//保存在request作用域
+			return "registFail";
+		}		
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public UserBiz getUserBiz() {
+		return userBiz;
+	}
+
+	public void setUserBiz(UserBiz userBiz) {
+		this.userBiz = userBiz;
+	}
+	public int getCurrPage() {
+		return currPage;
+	}
+	public void setCurrPage(int currPage) {
+		this.currPage = currPage;
+	}
+	public String getKeyword() {
+		return keyword;
+	}
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
+	public String getMsg() {
+		return Msg;
+	}
+	public void setMsg(String msg) {
+		Msg = msg;
+	}
+	public UserDetail getUserDetail() {
+		return userDetail;
+	}
+
+	public void setUserDetail(UserDetail userDetail) {
+		this.userDetail = userDetail;
+	}
+
+	public UserDetailBiz getUserDetailBiz() {
+		return userDetailBiz;
+	}
+
+	public void setUserDetailBiz(UserDetailBiz userDetailBiz) {
+		this.userDetailBiz = userDetailBiz;
+	}
+	
+}

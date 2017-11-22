@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <constant name="struts.devMode" value="true" />
+    <package name="default" namespace="/" extends="json-default">
+    	<action name="*_UserAction" class="com.gem.xianzhi.actions.UserAction" method="{1}">
+    		<result name="bgLoginSuccess" type="redirect">/bgIndex.jsp</result><!-- 后台登录成功 -->
+    		<result name="bgLoginFail">/bgLogin.jsp</result><!-- 后台登录失败 -->
+    		<result name="loadAllSuccess">/frames/bgMain.jsp</result><!-- 后台加载所有用户列表成功 -->
+    		<result name="registSuccess">/login.jsp</result><!-- 注册成功 -->
+    		<result name="registFail">/regist.jsp</result><!-- 注册失败 -->
+    		
+    		<result name="loginSuccess" type="redirectAction"><!-- 登录成功 -->
+    			<param name="actionName">Index_preIndexAction</param>
+    			<param name="namespace">/</param>
+    		</result>
+    		
+    		<result name="loginFail">/login.jsp</result><!-- 登录失败 -->
+    		
+    		<result name="bdSuccess" type="redirectAction"><!-- 后台用户封禁和解封 -->
+    			<param name="actionName">preIndex_UserAction</param>
+    			<param name="namespace">/</param>
+    		</result>
+    	</action>
+    	
+    	<action name="*_NewsAction" class="com.gem.xianzhi.actions.NewsAction" method="{1}">
+    		<result name="loadAllSuccess">/bgNewsList.jsp</result>
+    		<result name="delSuccess" type="redirectAction">
+    			<param name="actionName">getNewsList_NewsAction</param>
+    			<param name="namespace">/</param>
+    		</result>
+    		<result name="loadSuccess" type="redirect">/news.jsp</result>
+    	</action>
+    	
+    	<action name="*_preIndexAction" class="com.gem.xianzhi.actions.preIndexAction" method="{1}">
+    		<result name="loadNewsListSuccess" type="redirect">/index.jsp</result>
+    		<result name="loadClassifySuccess">/index.jsp</result>
+    		<result name="getDetailSuccess" type="redirect">/news.jsp</result>
+    	</action>
+    	
+    	<action name="*_UserCenterAction" class="com.gem.xianzhi.actions.UserCenterAction" method="{1}">
+    		<result type="redirect">personal.jsp</result>
+    		<!-- <result name="loadFollowUserSuccess">/personal.jsp</result>
+    		<result name="loadReceiveEmailsSuccess">/personal.jsp</result>
+    		<result name="loadSendEmailsSuccess">/personal.jsp</result>
+    		<result name="loadCollectNewsSuccess">/personal.jsp</result>
+    		<result name="loadMyNewsSuccess">/personal.jsp</result>
+    		<result name="loadDiscussSuccess">/personal.jsp</result>
+    		<result name="loadReplysSuccess">/personal.jsp</result> -->
+    	</action>
+
+    </package>
+
+</struts>

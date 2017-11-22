@@ -1,0 +1,8 @@
+package com.gem.xianzhi.Biz;
+
+import com.gem.xianzhi.pojo.Discuss;
+
+public interface DiscussBiz{
+	
+	Discuss getDiscuss(int discussId);
+}

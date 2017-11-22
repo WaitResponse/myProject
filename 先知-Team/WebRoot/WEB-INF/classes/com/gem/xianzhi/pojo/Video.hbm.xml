@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping
+        SYSTEM
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.gem.xianzhi.pojo">
+	<class name="Video" table="t_video">
+		<id name="id">
+			<generator class="native"/>
+		</id>
+		<property name="src"/>
+		<property name="title"/>
+		<property name="detail"/>
+		<property name="type"/>
+		<property name="picture"/>
+		<property name="date"/>
+		<property name="clickCount"/>
+		<property name="audit"/>
+		<property name="discussCount"/>
+		
+		<many-to-one name="author"/>
+
+		<set name="discuss">
+			<key column="videoId"/>
+			<one-to-many class="Discuss"/>
+		</set>
+	
+	</class>
+</hibernate-mapping>

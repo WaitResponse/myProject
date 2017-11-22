@@ -1,0 +1,109 @@
+<%@page contentType="text/html; charset=utf-8"%>
+<!DOCTYPE html>
+<html>
+	<head>
+		<base href="${pageContext.request.contextPath}/">
+		<title></title>
+		<style type="text/css">
+			input{
+				font: 12px/1.14 "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", "Helvetica Neue", Arial, sans-serif;
+				-webkit-font-smoothing: antialiased;
+				color: #333;
+				outline: 0
+
+			}
+			body,
+			html,
+			iframe
+				{
+					border: 0
+				}
+			#div0{
+				border:0;
+				width: 383px;
+				height: 380px;
+				margin-left: 560px;
+				margin-top: 270px;			
+			}
+			.icon-headlogin{
+				width: 50px;
+				height: 30px;
+				margin-left: 10px;
+				margin-bottom: 30px;
+				border: 0;
+				background-color: white;
+				font-size: 17px;
+
+			}
+			.zhuce{
+				margin-left: 50px;
+				width: 50px;
+				height: 30px;
+				border: 0;
+				background-color: red;
+				color:white;
+				font-size: 17px;
+			}
+			.icon-headlogin2{
+				width: 240px;
+				height: 35px;
+				margin-left: 0;
+				margin-top: 15px;
+				background-color: red;
+				border: 0;
+				color:white;
+				font-size: 17px;
+			}
+			.yhm{
+				width: 240px;
+				height:30px;
+				margin-bottom: 8px;
+				font-size: 15px;
+				color:threedlightshadow ;
+			}
+			.mm{
+				width: 240px;
+				height: 30px;
+				margin-bottom: 8px;
+				font-size: 15px;
+				color:threedlightshadow ;
+			}
+			.ecmm{
+				width: 240px;
+				height:30px;
+				margin-bottom: 8px;
+				font-size: 15px;
+				color:threedlightshadow ;
+			}
+			.sjh{
+				width: 240px;
+				height:30px;
+				margin-bottom: 8px;
+				font-size: 15px;
+				color:threedlightshadow ;
+			}
+			.yx{
+				width: 240px;
+				height:30px;
+				margin-bottom: 8px;
+				font-size: 15px;
+				color:threedlightshadow ;
+			}
+		</style>
+	</head>
+	<body style="background:url('images/login.jpg') no-repeat">
+		<div id="div0">
+		<form action="user.do" method="post">
+			<input type="hidden" name="operate" value="login">
+			<input type="submit" value="登录" class="icon-headlogin" />
+			<input type="reset" value="注册"/ class="zhuce" value="white color"><br/>
+			<input type="textarea" name="loginId" value="用户名" class="yhm"/><br/>
+			<input type="textarea" name="pwd" value="密码" class="mm"/><br/>
+			<input type="textarea" name="pwd" value="再次输入密码" class="ecmm"/><br/>
+			<input type="textarea" name="pwd" value="手机号" class="sjh"/><br/>
+			<input type="textarea" name="pwd" value="邮箱" style="" class="yx"/><br/>
+			<input type="submit" value="注册成功" class="icon-headlogin2" value="white color"/>
+		</form>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,121 @@
+package com.gem.xianzhi.pojo;
+
+import java.util.Date;
+import java.util.Set;
+
+public class Video {
+	private int id;
+	private String title;// 视频标题
+	private String detail;// 视频描述
+	private String src;// 视频存放地址
+	private String type;// 视频分类
+	private String picture;// 视频截图
+	private Date date;// 上传时间
+	private int clickCount;// 点击量
+	private String audit;//审核情况
+	private int discussCount;//评论数量
+
+	private User author;// 上传作者
+	private Set<Discuss> discuss;// 视频评论
+
+	
+	public Video() {
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getDetail() {
+		return detail;
+	}
+
+	public void setDetail(String detail) {
+		this.detail = detail;
+	}
+
+	public String getSrc() {
+		return src;
+	}
+
+	public void setSrc(String src) {
+		this.src = src;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getPicture() {
+		return picture;
+	}
+
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public int getClickCount() {
+		return clickCount;
+	}
+
+	public void setClickCount(int clickCount) {
+		this.clickCount = clickCount;
+	}
+
+	public User getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(User author) {
+		this.author = author;
+	}
+
+	public Set<Discuss> getDiscuss() {
+		return discuss;
+	}
+
+	public void setDiscuss(Set<Discuss> discuss) {
+		this.discuss = discuss;
+	}
+
+	public String getAudit() {
+		return audit;
+	}
+
+	public void setAudit(String audit) {
+		this.audit = audit;
+	}
+
+	public int getDiscussCount() {
+		return discussCount;
+	}
+
+	public void setDiscussCount(int discussCount) {
+		this.discussCount = discussCount;
+	}
+	
+}

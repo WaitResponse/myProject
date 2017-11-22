@@ -1,0 +1,18 @@
+package com.gem.xianzhi.dao.impl;
+
+import java.util.Set;
+
+import com.gem.xianzhi.dao.ReplyDAO;
+import com.gem.xianzhi.dao.base.impl.BaseDAO;
+import com.gem.xianzhi.pojo.Discuss;
+import com.gem.xianzhi.pojo.Reply;
+
+public class ReplyDAOImpl  extends BaseDAO<Reply> implements ReplyDAO{
+
+	@Override
+	public Set<Reply> getReplyList(int discussId) {
+		return getHibernateTemplate().load(Discuss.class, discussId).getReply();
+	}
+
+
+}
